@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initialscale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <style>
+            /*
+             * Page background is controlled by the CSS variable --site-bg below.
+             * To change the page background color, edit --site-bg (hex, rgb, or named color).
+             * Example: --site-bg: #ffffff; or --site-bg: #f0f8ff;
+             */
+            :root {
+                --site-bg: powderblue; /* default page background (was powderblue) */
+            }
+
+            .site-bg {
+                background-color: var(--site-bg);
+                min-height: 100vh; /* ensures background covers the page */
+            }
+
+            /* custom navbar color and optional gradient */
+            .site-navbar {
+                background: linear-gradient(90deg, #4a7772 0%, #1f7a73 100%);
+            }
+
+            /* Ensure navbar text and buttons are readable on the dark navbar */
+            .site-navbar .navbar-brand,
+            .site-navbar .nav-link,
+            .site-navbar .btn {
+                color: #ffffff !important;
+            }
+        </style>
+    </head>
+
+    <body class="site-bg">
+        <nav class="navbar navbar-expand-lg site-navbar navbar-dark shadow-sm">
+            <div class="container">
+                <a class="navbar-brand mx-auto" href="{% url 'event_list' %}">Event Manager</a>
+
+                <div class="d-flex">
+                    {% if request.user.is_authenticated %}
+                        <a class="btn btn-outline-primary me-2" href="{% url 'logout' %}">Logout</a>
+                    {% else %}
+                        <a class="btn btn-primary me-2" href="{% url 'login' %}">Login</a>
+                        <a class="btn btn-outline-primary" href="{% url 'register' %}">Register</a>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+        {% block content %}
+        {% endblock content %}
+    </body>
+</html>

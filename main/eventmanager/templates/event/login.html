@@ -1,0 +1,11 @@
+{% extends "event/base.html" %}
+
+{% block content %}
+    <h2 style="text-align: center;">Login</h2>
+    <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data" style="background-color: rgb(104, 134, 138); color:aliceblue">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    <p style="text-align: center;">Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
+{% endblock %}
