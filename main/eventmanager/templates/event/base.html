@@ -11,7 +11,7 @@
              * Example: --site-bg: #ffffff; or --site-bg: #f0f8ff;
              */
             :root {
-                --site-bg: powderblue; /* default page background (was powderblue) */
+                --site-bg: #ffffff; /* default page background (was powderblue) */
             }
 
             .site-bg {
@@ -21,14 +21,14 @@
 
             /* custom navbar color and optional gradient */
             .site-navbar {
-                background: linear-gradient(90deg, #4a7772 0%, #1f7a73 100%);
+                background: linear-gradient(90deg, #c2c2c2 0%, #969696 100%);
             }
 
             /* Ensure navbar text and buttons are readable on the dark navbar */
             .site-navbar .navbar-brand,
             .site-navbar .nav-link,
             .site-navbar .btn {
-                color: #ffffff !important;
+                color: #000000 !important;
             }
         </style>
     </head>
@@ -42,7 +42,7 @@
                     {% if request.user.is_authenticated %}
                         <a class="btn btn-outline-primary me-2" href="{% url 'logout' %}">Logout</a>
                     {% else %}
-                        <a class="btn btn-primary me-2" href="{% url 'login' %}">Login</a>
+                        <a class="btn btn-outline-primary me-2" href="{% url 'login' %}">Login</a>
                         <a class="btn btn-outline-primary" href="{% url 'register' %}">Register</a>
                     {% endif %}
                 </div>
