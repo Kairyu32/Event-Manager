@@ -2,7 +2,7 @@ from django.test import TestCase, Client
 from django.contrib.auth.models import User
 from .models import EventManager
 
-
+# Test cases for the event views and RSVP functionality
 class EventsViewTests(TestCase):
 	def setUp(self):
 		self.client = Client()
