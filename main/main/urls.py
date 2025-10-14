@@ -3,6 +3,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+# The URL patterns for the project
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('eventmanager.urls')),

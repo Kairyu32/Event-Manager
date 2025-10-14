@@ -8,32 +8,35 @@ from datetime import datetime
 
 # Create your views here.
 
+# Logic for user registration
 def register_view(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
-        if form.is_valid():
+        if form.is_valid(): # Checks username isn't taken, password meets criteria, etc.
             user = form.save()
             login(request, user)
-            return redirect('/')
+            return redirect('/') # Redirect to homepage after successful registration
     else:
         form = UserCreationForm()
-    return render(request, 'event/register.html', {'form': form})
+    return render(request, 'event/register.html', {'form': form}) # Sends the user back to registration page if GET or form invalid
 
+# Logic for user login
 def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
+        if form.is_valid(): # Checks username and password are correct
             user = form.get_user()
-            login(request, user)
+            login(request, user) # Logs the user in
             print("User logged in")
-            return redirect('/')
+            return redirect('/') # Redirect to homepage after successful login
         else:
-            print("Form invalid:", form.errors)
+            print("Form invalid:", form.errors) # Debugging line to see why login failed
             return render(request, 'event/login.html', {'form': form})
     else:
-        form = AuthenticationForm()
+        form = AuthenticationForm() # Empty form for GET request
     return render(request, 'event/login.html', {'form': form})
 
+# Simple logout logic   
 def logout_view(request):
     logout(request)
     return redirect('/')
