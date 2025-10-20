@@ -17,7 +17,7 @@
 
      <!-- Add Event Form -->
     {% if request.user.is_authenticated %}
-        <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data" style="background-color: rgb(104, 134, 138); color:aliceblue">
+        <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% if errors %}
                 <div class="alert alert-danger">
